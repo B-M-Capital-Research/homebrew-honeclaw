@@ -2,21 +2,21 @@ class Honeclaw < Formula
   desc "CLI bundle for the Hone investment research assistant"
   homepage "https://github.com/B-M-Capital-Research/honeclaw"
   license "MIT"
-  version "0.1.3"
+  version "0.1.4"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.3/honeclaw-darwin-aarch64.tar.gz"
-      sha256 "ed677cc3e86b836538f2fc88ccd1d8e7c41380d613868c0cce19b286b0c71ac6"
+      url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.4/honeclaw-darwin-aarch64.tar.gz"
+      sha256 "a7d32a56fee1c937d3b2a7e5228b976573f317f1e41e110040f677511580fdd5"
     else
-      url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.3/honeclaw-darwin-x86_64.tar.gz"
-      sha256 "557feb697236a8e49164cba0d447d3609ec3ef2341e07d2fe6fb1d55aba8819b"
+      url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.4/honeclaw-darwin-x86_64.tar.gz"
+      sha256 "97b64071f32dafe7a685cd642bade41ddd2ca2e2618fe80293fd76c0e4d6cd04"
     end
   end
 
   on_linux do
-    url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.3/honeclaw-linux-x86_64.tar.gz"
-    sha256 "959a1c421c80543d92d4c975bba7cc088bb6d8c3c9d09aed6bd6f61f22e54d0e"
+    url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.4/honeclaw-linux-x86_64.tar.gz"
+    sha256 "0bc904c47104a16ebf7943a7ff6e41693f4408f62fc8b346d257e135bf594a48"
   end
 
   def install
@@ -30,6 +30,7 @@ class Honeclaw < Formula
       HONE_DATA_DIR="${HONE_DATA_DIR:-$HONE_HOME/data}"
       HONE_USER_CONFIG_PATH="${HONE_USER_CONFIG_PATH:-$HONE_HOME/config.yaml}"
       HONE_SKILLS_DIR="${HONE_SKILLS_DIR:-#{libexec}/share/honeclaw/skills}"
+      HONE_WEB_DIST_DIR="${HONE_WEB_DIST_DIR:-#{libexec}/share/honeclaw/web}"
 
       mkdir -p "$HONE_DATA_DIR/runtime"
 
@@ -46,6 +47,7 @@ class Honeclaw < Formula
       export HONE_USER_CONFIG_PATH
       export HONE_DATA_DIR
       export HONE_SKILLS_DIR
+      export HONE_WEB_DIST_DIR
 
       exec "#{libexec}/bin/hone-cli" "$@"
     EOS
