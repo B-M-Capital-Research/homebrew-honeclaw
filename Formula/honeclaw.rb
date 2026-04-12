@@ -2,21 +2,21 @@ class Honeclaw < Formula
   desc "CLI bundle for the Hone investment research assistant"
   homepage "https://github.com/B-M-Capital-Research/honeclaw"
   license "MIT"
-  version "0.1.6"
+  version "0.1.7"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.6/honeclaw-darwin-aarch64.tar.gz"
-      sha256 "c0d15ba40609b1757a3edea3cd791b54ab0de93e2b27852ec4f8bf1dd043a7cc"
+      url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.7/honeclaw-darwin-aarch64.tar.gz"
+      sha256 "f235d5d86ae693149f473935d8ccab2a174ef470288f4f90203165a61d21b011"
     else
-      url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.6/honeclaw-darwin-x86_64.tar.gz"
-      sha256 "f06cfe2588c6de83244817bb64b5630ec7e70b89f5d89f71dcf4a5d0ee41303c"
+      url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.7/honeclaw-darwin-x86_64.tar.gz"
+      sha256 "a530362e68d3678105071334f09f585f8d50f7bbc0f5f43a67a4494e8793ecf1"
     end
   end
 
   on_linux do
-    url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.6/honeclaw-linux-x86_64.tar.gz"
-    sha256 "e70efdb1ea509836d16971d9ca9652bc34a955fba3aa1dfafd4167d2debab133"
+    url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.7/honeclaw-linux-x86_64.tar.gz"
+    sha256 "8b328f1a80e171814a3a9a0fc19714725ae54c952887e358180fe956c281a54a"
   end
 
   def install
@@ -58,6 +58,12 @@ class Honeclaw < Formula
   def caveats
     <<~EOS
       Hone stores user config in ~/.honeclaw/config.yaml and runtime data in ~/.honeclaw/data.
+
+      To remove local Hone data before uninstalling, run:
+        hone-cli cleanup
+
+      To uninstall the Homebrew package itself, run:
+        brew uninstall honeclaw
 
       Next steps:
         hone-cli doctor
