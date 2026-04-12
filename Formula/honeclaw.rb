@@ -2,21 +2,21 @@ class Honeclaw < Formula
   desc "CLI bundle for the Hone investment research assistant"
   homepage "https://github.com/B-M-Capital-Research/honeclaw"
   license "MIT"
-  version "0.1.1"
+  version "0.1.3"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.1/honeclaw-darwin-aarch64.tar.gz"
-      sha256 "a5df560f2c2694961bf3e6c7535b6f9433e3a430148c6947e9df9ab1a25ce18b"
+      url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.3/honeclaw-darwin-aarch64.tar.gz"
+      sha256 "ed677cc3e86b836538f2fc88ccd1d8e7c41380d613868c0cce19b286b0c71ac6"
     else
-      url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.1/honeclaw-darwin-x86_64.tar.gz"
-      sha256 "fba8c8ee2b6112b59a12b9430830e5f82ad81195eb5470353a2b83283d844119"
+      url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.3/honeclaw-darwin-x86_64.tar.gz"
+      sha256 "557feb697236a8e49164cba0d447d3609ec3ef2341e07d2fe6fb1d55aba8819b"
     end
   end
 
   on_linux do
-    url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.1/honeclaw-linux-x86_64.tar.gz"
-    sha256 "600cc3f09dfe5daa28f512a3c5e6f1e93aec42f4f79840ebf9c88478efb0b246"
+    url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.3/honeclaw-linux-x86_64.tar.gz"
+    sha256 "959a1c421c80543d92d4c975bba7cc088bb6d8c3c9d09aed6bd6f61f22e54d0e"
   end
 
   def install
