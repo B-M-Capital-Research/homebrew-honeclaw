@@ -7,16 +7,16 @@ class Honeclaw < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.26/honeclaw-darwin-aarch64.tar.gz"
-      sha256 "745470bf37fe1308c8c5b4452e9f67216f3955d7291a58649c0c018d7a6cc988"
+      sha256 "cfba0f63d105bf8bb5edccfb839eac62672dba2cb628c085452cf69af8598c1e"
     else
       url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.26/honeclaw-darwin-x86_64.tar.gz"
-      sha256 "932dfbf5f4d4755f983ac86c4e10c6cb933eaebc2712131ec994b5cd9bafe883"
+      sha256 "8ff8ebae2f200905e1ef46c074833c457d2b5aec3ca06fe7f5a9a1ea297dfd1e"
     end
   end
 
   on_linux do
     url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.1.26/honeclaw-linux-x86_64.tar.gz"
-    sha256 "7f59450bbe1bd8984f557b24afbb4b1bee74bd9b9b0229f68d23e5b2bdc9b6d2"
+    sha256 "060e55fa05a2b5023af0c2f8e8512a42b5a7a7117c5813710b63c7e746588bff"
   end
 
   def install
