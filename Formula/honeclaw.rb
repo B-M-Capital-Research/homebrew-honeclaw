@@ -2,21 +2,21 @@ class Honeclaw < Formula
   desc "CLI bundle for the Hone investment research assistant"
   homepage "https://github.com/B-M-Capital-Research/honeclaw"
   license "MIT"
-  version "0.10.0"
+  version "0.11.0"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.10.0/honeclaw-darwin-aarch64.tar.gz"
-      sha256 "9434cad08b04d8103c777e3a7127b45d7cf1fe0e415f060ee0e8d01669c7a959"
+      url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.11.0/honeclaw-darwin-aarch64.tar.gz"
+      sha256 "71d9eba94e470f6fe4df0c1074380932a511b2180d1e9aba7a61cb95e7a444c6"
     else
-      url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.10.0/honeclaw-darwin-x86_64.tar.gz"
-      sha256 "5c4ca28f7ab22ad33d425600f1fa6bb01dc6de71ae5c9040e3abe920f84d33e6"
+      url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.11.0/honeclaw-darwin-x86_64.tar.gz"
+      sha256 "de00fd81b5cb8ea83b0f37aaaf63a3c666e1007ffffc6033888d12697d0f944e"
     end
   end
 
   on_linux do
-    url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.10.0/honeclaw-linux-x86_64.tar.gz"
-    sha256 "fa4f2316489990351192e0a1f389d657dc28b06eba38dc0a7bc8b7138005b71f"
+    url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.11.0/honeclaw-linux-x86_64.tar.gz"
+    sha256 "307b58005d00094ad6785b9a5dde6ef2a185292c07f7b150a7d8ae800f4f7640"
   end
 
   def install
@@ -31,6 +31,7 @@ class Honeclaw < Formula
       HONE_USER_CONFIG_PATH="${HONE_USER_CONFIG_PATH:-$HONE_HOME/config.yaml}"
       HONE_SKILLS_DIR="${HONE_SKILLS_DIR:-#{libexec}/share/honeclaw/skills}"
       HONE_WEB_DIST_DIR="${HONE_WEB_DIST_DIR:-#{libexec}/share/honeclaw/web}"
+      HONE_PUBLIC_WEB_DIST_DIR="${HONE_PUBLIC_WEB_DIST_DIR:-#{libexec}/share/honeclaw/web-public}"
 
       mkdir -p "$HONE_DATA_DIR/runtime"
 
@@ -48,6 +49,7 @@ class Honeclaw < Formula
       export HONE_DATA_DIR
       export HONE_SKILLS_DIR
       export HONE_WEB_DIST_DIR
+      export HONE_PUBLIC_WEB_DIST_DIR
 
       exec "#{libexec}/bin/hone-cli" "$@"
     EOS
@@ -69,6 +71,7 @@ class Honeclaw < Formula
         hone-cli doctor
         hone-cli onboard
         hone-cli start
+        hone-cli web admin-ui
     EOS
   end
 
