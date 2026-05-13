@@ -2,21 +2,21 @@ class Honeclaw < Formula
   desc "CLI bundle for the Hone investment research assistant"
   homepage "https://github.com/B-M-Capital-Research/honeclaw"
   license "MIT"
-  version "0.11.2"
+  version "0.12.0"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.11.2/honeclaw-darwin-aarch64.tar.gz"
-      sha256 "e0701db6003936059ded6cc3baac6491491a12029e65ed759e561f79dae22669"
+      url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.12.0/honeclaw-darwin-aarch64.tar.gz"
+      sha256 "7119f61fa266a15db89a3c07312d530217c9d22ce9311a5d06e2d8d039daa847"
     else
-      url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.11.2/honeclaw-darwin-x86_64.tar.gz"
-      sha256 "e4b92def5923f60cc1c5053dd240a42c8abb6a6ab80d8b68212dcf6ff9e19084"
+      url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.12.0/honeclaw-darwin-x86_64.tar.gz"
+      sha256 "39c244281eaa35b084d43f033bcbc997b63dfc5ab2de507b805bfa32b1cba95a"
     end
   end
 
   on_linux do
-    url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.11.2/honeclaw-linux-x86_64.tar.gz"
-    sha256 "0831568b33a0ca1f998572030903625e1e7a3a13ad0cbddebef71c53e076acae"
+    url "https://github.com/B-M-Capital-Research/honeclaw/releases/download/v0.12.0/honeclaw-linux-x86_64.tar.gz"
+    sha256 "7308e892b4ef0e22d574dd3abd2007e87dca5dc41198e5e86748d50cb81a7782"
   end
 
   def install
@@ -33,6 +33,7 @@ class Honeclaw < Formula
       HONE_WEB_DIST_DIR="${HONE_WEB_DIST_DIR:-#{libexec}/share/honeclaw/web}"
       HONE_PUBLIC_WEB_DIST_DIR="${HONE_PUBLIC_WEB_DIST_DIR:-#{libexec}/share/honeclaw/web-public}"
 
+      mkdir -p "$HONE_HOME"
       mkdir -p "$HONE_DATA_DIR/runtime"
 
       if [[ "$HONE_USER_CONFIG_PATH" == "$HONE_HOME/config.yaml" && ! -f "$HONE_USER_CONFIG_PATH" ]]; then
@@ -50,6 +51,12 @@ class Honeclaw < Formula
       export HONE_SKILLS_DIR
       export HONE_WEB_DIST_DIR
       export HONE_PUBLIC_WEB_DIST_DIR
+
+      if [[ ! -x "#{libexec}/bin/hone-cli" ]]; then
+        echo "installed Hone CLI binary is missing: #{libexec}/bin/hone-cli" >&2
+        echo "reinstall or upgrade the Hone Homebrew package, then retry" >&2
+        exit 1
+      fi
 
       exec "#{libexec}/bin/hone-cli" "$@"
     EOS
@@ -72,6 +79,7 @@ class Honeclaw < Formula
         hone-cli onboard
         hone-cli start
         hone-cli web admin-ui
+        hone-cli web user-ui
     EOS
   end
 
